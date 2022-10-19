@@ -4,7 +4,6 @@ dloop = function(n, nreps){
   for (i in 1:nreps){
     Card = sample(Box, 2*n)
     frequ = array(0,2*n)
-    maxlength = 1
     for (k in 1:(2*n)) {
       Box_index = k
       trials = 1
@@ -12,13 +11,10 @@ dloop = function(n, nreps){
         Box_index = Card[Box_index]
         trials = trials + 1
       }
-      if (trials >50){
-        prob[trials] = prob[trials] + 1
-      }else{
-        maxlength = max(maxlength,trials)
-      }
+      frequ[trials] = frequ[trials] + 1
     }
-    
+    maxlength = max(frequ)
+    prob[maxlength]
   }
   return(prob/(nreps*2*n))
 }
