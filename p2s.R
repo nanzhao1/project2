@@ -17,7 +17,7 @@ Strategy = function(n, k, strategy, Card){
   Count = 0 
   # When the simulation is successful, the count is assigned to 1, otherwise, the count is still 0
   Box = array(1:(2*n))
-  if (strategy != 3){# if strategy is not 3,that is 1 or 2, go this way
+  if (strategy != 3){# if the strategy is not 3
     # if the strategy is 1
     Box_index = k # the prisoner starts at the box with their number on it
     # if the strategy is 2
@@ -25,7 +25,7 @@ Strategy = function(n, k, strategy, Card){
       ran_num = sample(Box,1) 
       Box_index = ran_num 
       # the prisoner starts from a randomly selected box with the number ran_num.
-      # use sample to random a number in 1:2*n 
+      # use sample to randomly choose a number in 1:2*n 
     }
     trials = 1 # count the number of trials 
     while (trials <= n && Card[Box_index] != k) {
@@ -36,9 +36,9 @@ Strategy = function(n, k, strategy, Card){
     }
     if (Card[Box_index] == k) {
       Count = 1
-      # only if the prisoner find its number, say k, the Count is assigned to 1
+      # only if the prisoner find its number, say k, the Count is assigned to 1, otherwise the Count is still 0.
     }
-  }else{
+  }else{ # if the strategy is 3
     Box_index = sample(Box, n) 
     # open n boxes at random, checking each card for their number
     if (tabulate(match(Card[Box_index],k)) == 1){
