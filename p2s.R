@@ -88,7 +88,7 @@ Pall  = function(n, strategy, nreps) {
     # prisoner number indicate that the i-th prisoner to conduct the simulation.
     # call the Strategy function to see if the i-th prisoner succeed to find corresponding card number, if succeed, continue the loop; if fail, break the loop.
     while (prisoner_number <= (2*n)  &&
-           Strategy((2*n), prisoner_number, strategy, Card) == 1) {
+           Strategy(n, prisoner_number, strategy, Card) == 1) {
       prisoner_number = prisoner_number + 1
     }
     if (prisoner_number == (2*n) + 1) {
