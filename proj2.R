@@ -34,7 +34,7 @@ Strategy = function(n, k, strategy, Card){
       Box_index = Card[Box_index]
       trials = trials + 1
     }
-    if (Card[Box_index] == k) {
+    if (Card[Box_index] == k && trials <= n) {# only if the prisoner succeeds in finding the card in times
       Count = 1
       # only if the prisoner find its number, say k, the Count is assigned to 1
     }
