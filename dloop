@@ -14,7 +14,7 @@ dloop = function(n, nreps){
       frequ[trials] = frequ[trials] + 1
     }
     maxlength = max(frequ)
-    prob[maxlength]
+    prob[maxlength] = prob[maxlength] + 1
   }
-  return(prob/(nreps*2*n))
+  return(prob/nreps)
 }
