@@ -1,6 +1,9 @@
 # 1.Nan Zhao s2314337  2.Bokun Yu s2359196  3.Lulu Xu s2418317
 # https://github.com/nanzhao1/project2.git
 # contribution:
+# Nan Zhao: code funtion Strategy, function Pall, function Pone, function dloop, make remarks on results
+# Bokun Yu: collobarate to code functions Pone and dloop, write comments for functions and debug functions.
+# Lulu Xu: code the examples to estimate probabilities and visualise it, modify the coding structures
 
 # define a function Strategy
 # the function Strategy conduct a simulation with strategy 1 or 2 or 3 to test whether the prisoner k succeed to find the card k
