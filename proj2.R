@@ -224,7 +224,7 @@ dloop = function(n, nreps){
   # occuring_times is a 1 by 2n array used to record how many times that different length loops occur at least once in nreps trials. 
   Box = array(1:(2*n))
   for (i in 1:nreps){
-    Card = sample(1,(2*n))
+    Card = sample(Box,(2*n))
     frequency = array(0,(2*n))
     # frequency is a 1 by 2n array used to record the occurence of different length loops, ie if length i loop occurs at least once, then i-th entry of frequency is assigned to be 1. Otherwise, it is still 0.
     for (k in 1:(2*n)) {
