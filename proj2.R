@@ -268,7 +268,7 @@ print(prob)
 result <- paste("The probability that there is no loop longer than 50 in a random reshuffling cards to boxes:",1-sum(prob[51:100]),sep=" ")
 print(result)
 # visualise the probabilities
-plot(prob)
+barplot(prob)
 
 
 
