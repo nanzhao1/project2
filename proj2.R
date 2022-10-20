@@ -191,16 +191,16 @@ print(joint_3_50)
 
 # remarks on results:
 # As n grows larger, the individual success probabilities of strategy 1 and 3 approach 0.5, while that of strategy 2 approaches 0.38.
-# The event that the prisoner find their number is identically and independently with success probability p.
+# The event that the prisoner k find the number k is identically and independently with success probability p.
 # The strategy 2, counterintuitively, the probability of the event that the individual find the number in 2*n boxes by n trials is not converging to 0.5.
 # Under the circumstances that the prisoner K open the box J containing the card J, the prisoner could never find the card K in strategy 2, which results in a lower probability.
 # The event that all the prisoners, simultaneously, find their number in one experiment follows the distribution of binomial (100, p). The consequent success probability if p^100, which is close to 0.
 # When n is large enough, the joint success probabilities of strategy 2 and strategy 3 are approaching 0. 
-# When n is large enough, counterintuitively, the joint success probabilities of strategy 1 is approximating to 0.3 instead of 0.
+# When n is large enough, counterintuitively, the joint success probabilities of strategy 1 is approximating to 0.31 instead of 0.
 # The strategy 1 turns out an effective way to succeed, as the joint success probability boosts.
 # In strategy 1, if one prisoner fails, then there will a lot of other prisoners fail. While one prisoner succeeds, the other prisoners consequently succeed as well.
 # That is, the prisoners tend to succeed or fail in the meantime. The consequent joint success probability is high.
-# It can be viewed as a compnent of circles. The elements in the same circle will succeed or fail simultaneously. Whenever the circle length is no longer than trial time, the prisoners can all succeed.
+# It can be viewed as a component of circles. The elements in the same circle will succeed or fail simultaneously. Whenever the maximum circle length is no longer than trial time, the prisoners can all succeed.
 
 
 
