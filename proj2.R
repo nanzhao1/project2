@@ -250,7 +250,7 @@ dloop = function(n, nreps){
 # picture shows the corresponding probabilities
 
 prob = dloop(50,10000)
-# show the probability of each loop length from 1 to 2n occurring at least once in a random shuffling of cards to boxes
+# show the probability of each loop length from 1 to 100 occurring at least once in a random shuffling of cards to boxes
 print(prob)
 # aim to assess the probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
 # probability equation: the above probability equals 1 minus the one when the loop length is longer than 50 assessed by function dloop
