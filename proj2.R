@@ -213,11 +213,17 @@ print(joint_3_50)
 # the value of which means the probability of each loop length from 1 to 2*n occurring at least in a random shuffling of cards to boxes
 
 
+# dloop is the function to estimate the probability of each loop length from 1 to 2n occuring at least once in a randomly shuffing of cards to boxes by simulation.
+# The return of dloop is a 1 by 2n array, whose entry i represents the probability of i-length loop occuring at least once.
 dloop = function(n, nreps){
+  # 2n is the number of prisoners.
+  # nreps is the number of simulations. 
   # frequency is a nreps by 2n array used to record the different length loops' occuring probabilities
-  frequency = matrix(0,nrow=nreps,ncol=2*n) 
+  prob = array(0, 2*n)
+  Box = array(1:(2*n))
   for (i in 1:nreps){
     Card = sample(1:(2*n))
+    frequency = array(0,(2*n))
     for (k in 1:(2*n)) {
       Box_index = k
       # trials records how many times that prisoner k can find its card k. 
@@ -227,13 +233,12 @@ dloop = function(n, nreps){
         Box_index = Card[Box_index]
         trials = trials + 1
       }
-      frequency[i,trials]=1
+      frequency[trials] = 1
     }
-    
+    prob = prob + frequency
   }
-  return(colSums(frequency)/nreps)
+  return(prob/nreps)
 }
-
 
 
 # example: n=50
