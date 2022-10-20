@@ -5,6 +5,7 @@
 
 
 
+
 # conduct a simulation with strategy 1 or 2 or 3 to test whether the prisoner k succeed to find the card k
 
 # define a function Strategy
@@ -64,6 +65,7 @@ Strategy = function(n, k, strategy, Card){
 
 
 
+
 # estimate the probability of a single prisoner succeeding in finding the corresponding number
 
 # define a function Pone
@@ -93,6 +95,7 @@ Pone = function(n, k, strategy, nreps){
   Probability_Estimate = Success / nreps
   return(Probability_Estimate)
 }
+
 
 
 
@@ -134,6 +137,7 @@ Pall  = function(n, strategy, nreps) {
   Probability_Estimate = Success / nreps
   return(Probability_Estimate)
 }
+
 
 
 
@@ -199,8 +203,8 @@ print(joint_3_50)
 
 
 
+
 # dloop is the function to estimate the probability of each loop length from 1 to 2n occuring at least once in a randomly shuffing of cards to boxes by simulation.
-# The return of dloop is a 1 by 2n array, whose entry i represents the probability of i-length loop occuring at least once.
 
 # define a function dloop
 
@@ -209,12 +213,9 @@ print(joint_3_50)
 # nreps is the number of replicate simulations to run to estimate the the probability, 1000 is reasonable
 
 # output:
-# return(colSums(frequency)/nreps)
-# the value of which means the probability of each loop length from 1 to 2*n occurring at least in a random shuffling of cards to boxes
-
-
-# dloop is the function to estimate the probability of each loop length from 1 to 2n occuring at least once in a randomly shuffing of cards to boxes by simulation.
 # The return of dloop is a 1 by 2n array, whose entry i represents the probability of i-length loop occuring at least once.
+
+
 dloop = function(n, nreps){
   # 2n is the number of prisoners.
   # nreps is the number of simulations. 
@@ -241,11 +242,56 @@ dloop = function(n, nreps){
 }
 
 
+
+
+
+# use the examples when n=50 to get the result of examples
+# use the function Strategy
+# assess the probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
+# visualise the probabilities sensibly
+
+
+# input:
+# n=50, nreps = 10000
+
+# output:
+# the probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
+# picture shows the corresponding probabilities
+
+
 # example: n=50
+# use function dloop
 prob = dloop(50,10000)
 # show the probability of each loop length from 1 to 2n occurring at least once in a random shuffling of cards to boxes
 print(prob)
+# aim to assess the probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
+# probability equation: the above probability equals 1 minus the one when the loop length is longer than 50
+# assess probabilities of each loop by function dloop 
+# sum the probabilities which loop length is from 51 to 100
+# get the final probability result based on the probability equation
 result <- paste("The probability that there is no loop longer than 50 in a random reshuffling cards to boxes:",1-sum(prob[51:100]),sep=" ")
 print(result)
 # visualise the probabilities
 plot(prob)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
