@@ -8,13 +8,12 @@ dloop = function(n, nreps){
   for (i in 1:nreps){
     Card = sample(1:(2*n))
     for (k in 1:(2*n)) {
-      Box_index=vector(length=(2*n))
-      Box_index[1] = k
+      Box_index = k
       # trials records how many times that prisoner k can find its card k. 
       # In other words, the value of trails is the length of the loop where prisoner k is in. 
       trials = 1
-      while (Card[Box_index[trials]] != k) {
-        Box_index[trials+1] = Card[Box_index[trials]]
+      while (Card[Box_index] != k) {
+        Box_index = Card[Box_index]
         trials = trials + 1
       }
       frequency[i,trials]=1
