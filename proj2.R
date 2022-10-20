@@ -154,15 +154,12 @@ print(joint_3_50)
 # dloop is the function to estimate the probability of each loop length from 1 to 2n occuring at least once in a randomly shuffing of cards to boxes by simulation.
 # The return of dloop is a 1 by 2n array, whose entry i represents the probability of i-length loop occuring at least once.
 dloop = function(n, nreps){
-# 2n is the number of prisoners.
-# nreps is the number of simulations. 
-# prob is a 1 by 2n array used to record the different length loops' occuring probabilities
-  prob = array(0,2*n) 
-  Box = array(1:(2*n))
+  # 2n is the number of prisoners.
+  # nreps is the number of simulations. 
+  # frequency is a nreps by 2n array used to record the different length loops' occuring probabilities
+  frequency = matrix(0,nrow=nreps,ncol=2*n) 
   for (i in 1:nreps){
-    Card = sample(Box, 2*n)
-    # frequency is a 1 by 2n array used to record how many times of different length loops occuring
-    frequency = array(0,2*n)
+    Card = sample(1:(2*n))
     for (k in 1:(2*n)) {
       Box_index = k
       # trials records how many times that prisoner k can find its card k. 
@@ -172,15 +169,13 @@ dloop = function(n, nreps){
         Box_index = Card[Box_index]
         trials = trials + 1
       }
-      # count how many times the loop with length trials occurs.
-      frequency[trials] = frequency[trials] + 1
+      frequency[i,trials]=1
     }
-    # maxlength is the maximum value of 1 by 2n array frequency, which represents how many prisoners in this loop. In other words, it is the length of the loop.
-    maxlength = max(frequency)
-    prob[maxlength] = prob[maxlength] + 1
+    
   }
-  return(prob/nreps)
+  return(colSums(frequency)/nreps)
 }
+
 
 
 # example: n=50
