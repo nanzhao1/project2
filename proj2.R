@@ -189,8 +189,6 @@ joint_3_50 <- paste("When strategy=3, n=50, the probability of all prisoners fin
 print(joint_3_50)
 
 
-
-
 # remarks on results:
 # Generally speaking, in strategy 1, the probability of all prisoners finding their number is always the greatest
 # When n is enough big, the joint success probabilities of strategy 2 and strategy 3 are approximately approaching 0 
@@ -198,55 +196,51 @@ print(joint_3_50)
 # When n is large enogh, counterintuitively, the joint success probabilities of strategy 1 is approximating to 0.3 instead of 0
 
 
-
-
-
+# define a function dloop
 # dloop is the function to estimate the probability of each loop length from 1 to 2n occuring at least once in a randomly shuffing of cards to boxes by simulation.
 
-# define a function dloop
-
 # input:
-# 2*n means the number of prisoners
+# n means half of the total number of prisoners
 # nreps is the number of replicate simulations to run to estimate the the probability, 1000 is reasonable
 
 # output:
 # The return of dloop is a 1 by 2n array, whose entry i represents the probability of i-length loop occuring at least once.
 
-
 dloop = function(n, nreps){
-  # 2n is the number of prisoners.
+  # n is half of the total number of prisoners
   # nreps is the number of simulations. 
-  # frequency is a nreps by 2n array used to record the different length loops' occuring probabilities
-  prob = array(0, 2*n)
+  occuring_times = array(0, 2*n)
+  # occuring_times is a 1 by 2n array used to record how many times that different length loops occur at least once in nreps trials. 
   Box = array(1:(2*n))
   for (i in 1:nreps){
-    Card = sample(1:(2*n))
+    Card = sample(1,(2*n))
     frequency = array(0,(2*n))
+    # frequency is a 1 by 2n array used to record the occurence of different length loops, ie if length i loop occurs at least once, then i-th entry of frequency is assigned to be 1. Otherwise, it is still 0.
     for (k in 1:(2*n)) {
       Box_index = k
+      trials = 1
       # trials records how many times that prisoner k can find its card k. 
       # In other words, the value of trails is the length of the loop where prisoner k is in. 
-      trials = 1
       while (Card[Box_index] != k) {
         Box_index = Card[Box_index]
+        # Box_index is changed to be the card number inside the previous box
         trials = trials + 1
       }
       frequency[trials] = 1
+      # the trials-th entry of frequency is assigned to be 1 when the loop of length trials occur at least once 
     }
-    prob = prob + frequency
+    occuring_times = occuring_times + frequency
+    # sum how many times of different length loops occur at least once in nreps trials.
+    prob = occuring_times / nreps
+    # prob is a 1 by 2*n used to estimate the probability of 1-2*n length loop occur at least once 
   }
-  return(prob/nreps)
+  return(prob)
 }
 
 
 
-
-
-# use the examples when n=50 to get the result of examples
-# use the function Strategy
 # assess the probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
 # visualise the probabilities sensibly
-
 
 # input:
 # n=50, nreps = 10000
@@ -255,32 +249,15 @@ dloop = function(n, nreps){
 # the probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
 # picture shows the corresponding probabilities
 
-
-# example: n=50
-# use function dloop
 prob = dloop(50,10000)
 # show the probability of each loop length from 1 to 2n occurring at least once in a random shuffling of cards to boxes
 print(prob)
 # aim to assess the probability that there is no loop longer than 50 in a random reshuffling of cards to boxes
-# probability equation: the above probability equals 1 minus the one when the loop length is longer than 50
-# assess probabilities of each loop by function dloop 
-# sum the probabilities which loop length is from 51 to 100
-# get the final probability result based on the probability equation
+# probability equation: the above probability equals 1 minus the one when the loop length is longer than 50 assessed by function dloop
 result <- paste("The probability that there is no loop longer than 50 in a random reshuffling cards to boxes:",1-sum(prob[51:100]),sep=" ")
 print(result)
 # visualise the probabilities
 plot(prob)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
