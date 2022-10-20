@@ -182,7 +182,7 @@ dloop = function(n, nreps){
 prob = dloop(50,10000)
 # show the probability of each loop length from 1 to 2n occurring at least once in a random shuffling of cards to boxes
 print(prob)
-result <- paste("The probability that there is no loop longer than 50 in a random reshuffling cards to boxes:",sum(prob[1:50]),sep=" ")
+result <- paste("The probability that there is no loop longer than 50 in a random reshuffling cards to boxes:",1-sum(prob[51:100]),sep=" ")
 print(result)
 #visualise the probabilities
 plot(prob)
